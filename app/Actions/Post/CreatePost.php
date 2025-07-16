@@ -13,9 +13,10 @@ class CreatePost
 
     public function handle(array $data): Post
     {
+        $randomTag = collect(['alpha', 'nova', 'zen', 'pulse'])->random();
         return Post::create([
             'title' => $data['title'],
-            'slug' => Str::slug($data['title']),
+            'slug' => $randomTag . '-' . Str::slug($data['title']) . '-' . Str::random(4),
             'content' => $data['content'],
             'image' => $data['image'],
             'user_id' => $data['user_id'] ?? Auth::id(),
