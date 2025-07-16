@@ -7,10 +7,12 @@ use App\Models\Post;
 use Illuminate\Support\Facades\Storage;
 use Livewire\Attributes\Layout;
 use Livewire\Component;
+use Livewire\WithPagination;
 
 #[Layout('layouts.app')]
 class IndexPost extends Component
 {
+    use WithPagination;
     public function updateStatus($id)
     {
         $post = Post::findOrFail($id);

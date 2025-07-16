@@ -12,7 +12,7 @@ class IndexPost
     {
         $team = auth()->user()->currentTeam;
         return $team
-            ? $team->posts()->with('team', 'user')->latest()->get()
+            ? $team->posts()->with('team', 'user')->latest()->paginate(10)
             : collect();
     }
 }

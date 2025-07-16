@@ -59,11 +59,15 @@
                         <a wire:click="delete({{ $post->id }})" wire:navigate
                             wire:confirm="Are you sure want to delete!"
                             class="cursor-pointer font-medium text-red-600 dark:text-red-500 hover:underline">Delete</a>
+                        |
+                        <a href="{{ route('posts.edit', $post->slug) }}" wire:navigate
+                            class="cursor-pointer font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
                     </div>
                 @empty
                     <p class="p-4 text-gray-500 dark:text-gray-400">No posts yet.</p>
                 @endforelse
             </div>
+            <div class="p-2 mt-6">{{ $posts->links() }}</div>
         </div>
     </div>
 </div>
