@@ -9,7 +9,7 @@
         {!! display_message(session('success'), 'success') !!}
     @endif
 
-    @if (session()->has('danger'))
+    @if (session()->has('error'))
         {!! display_message(session('error'), 'error') !!}
     @endif
 
