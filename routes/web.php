@@ -1,6 +1,7 @@
 <?php
 
 use App\Livewire\Posts\CreatePost;
+use App\Livewire\Posts\IndexPost;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -16,5 +17,6 @@ Route::middleware([
         return view('dashboard');
     })->name('dashboard');
 
+    Route::get('/posts', IndexPost::class)->name('posts.index');
     Route::get('/posts/create', CreatePost::class)->name('posts.create');
 });

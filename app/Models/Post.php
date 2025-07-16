@@ -28,6 +28,11 @@ class Post extends Model
         return $this->belongsTo(User::class);
     }
 
+    public function team()
+    {
+        return $this->belongsTo(Team::class);
+    }
+
     public function scopeOwnedBy($query, $user_id)
     {
         return $query->where('user_id', $user_id);

@@ -16,6 +16,14 @@
         </div>
     @endif
 
+    <div class="flex h-full flex-1 flex-col gap-4 rounded-xl p-4 overflow-x-auto">
+        <div class="flex justify-end">
+            <a href="{{ route('posts.index') }}" wire:navigate
+                class="px-4 py-2 bg-indigo-600 hover:bg-indigo-700 dark:bg-indigo-500 dark:hover:bg-indigo-600 text-white rounded-md">View
+                Post</a>
+        </div>
+    </div>
+
     <div>
         <div class="max-w-7xl mx-auto py-10 sm:px-6 lg:px-8">
             <form wire:submit.prevent="save"
