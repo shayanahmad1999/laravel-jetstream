@@ -41,8 +41,9 @@
                             <div class="mt-2 text-sm text-gray-500 dark:text-gray-400 space-x-2">
                                 <span>👤 {{ $post->user->name }}</span>
                                 <span>🏷️ {{ $post->team->name }}</span>
-                                <span
-                                    class="inline-block px-2 py-0.5 text-xs rounded-full
+                                <span wire:click="updateStatus({{ $post->id }})"
+                                    wire:loading.class="opacity-50 cursor-not-allowed"
+                                    class="inline-block px-2 py-0.5 text-xs rounded-full cursor-pointer
                         {{ $post->status === 'published' ? 'bg-green-100 text-green-800 dark:bg-green-800 dark:text-green-100' : 'bg-yellow-100 text-yellow-800 dark:bg-yellow-800 dark:text-yellow-100' }}">
                                     {{ ucfirst($post->status) }}
                                 </span>
