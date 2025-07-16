@@ -73,4 +73,19 @@ class User extends Authenticatable implements MustVerifyEmail
     {
         return $this->hasMany(Post::class);
     }
+
+    public function isSuperAdmin()
+    {
+        return $this->role === 'Super Admin';
+    }
+
+    public function isAdmin()
+    {
+        return $this->role === 'Admin';
+    }
+
+    public function isCreator()
+    {
+        return $this->role === 'Creator';
+    }
 }

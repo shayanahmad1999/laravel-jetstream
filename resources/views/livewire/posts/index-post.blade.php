@@ -56,9 +56,11 @@
                                 </span>
                             </div>
                         </div>
-                        <a wire:click="delete({{ $post->id }})" wire:navigate
-                            wire:confirm="Are you sure want to delete!"
-                            class="cursor-pointer font-medium text-red-600 dark:text-red-500 hover:underline">Delete</a>
+                        @can('delete', $post)
+                            <a wire:click="delete({{ $post->id }})" wire:navigate
+                                wire:confirm="Are you sure want to delete!"
+                                class="cursor-pointer font-medium text-red-600 dark:text-red-500 hover:underline">Delete</a>
+                        @endcan
                         |
                         <a href="{{ route('posts.edit', $post->slug) }}" wire:navigate
                             class="cursor-pointer font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>

@@ -6,6 +6,7 @@ use App\Actions\Post\IndexPost as PostIndexPost;
 use App\Models\Post;
 use Illuminate\Support\Facades\Storage;
 use Livewire\Attributes\Layout;
+use Livewire\Attributes\Url;
 use Livewire\Component;
 use Livewire\WithPagination;
 
@@ -13,6 +14,17 @@ use Livewire\WithPagination;
 class IndexPost extends Component
 {
     use WithPagination;
+
+    // #[Url(history: true)]
+    // public $search = '';
+
+    // protected $updatesQueryString = ['search'];
+
+    // public function updatingSearch()
+    // {
+    //     $this->resetPage();
+    // }
+
     public function updateStatus($id)
     {
         $post = Post::findOrFail($id);
