@@ -18,7 +18,9 @@ Route::middleware([
         return view('dashboard');
     })->name('dashboard');
 
-    Route::get('/posts', IndexPost::class)->name('posts.index');
-    Route::get('/posts/create', CreatePost::class)->name('posts.create');
-    Route::get('/posts/{slug}/edit', EditPost::class)->name('posts.edit');
+    Route::middleware(['multiRole:admin,creator'])->group(function () {
+        Route::get('/posts', IndexPost::class)->name('posts.index');
+        Route::get('/posts/create', CreatePost::class)->name('posts.create');
+        Route::get('/posts/{slug}/edit', EditPost::class)->name('posts.edit');
+    });
 });
