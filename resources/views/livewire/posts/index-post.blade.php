@@ -56,6 +56,9 @@
                                 </span>
                             </div>
                         </div>
+                        <a wire:click="delete({{ $post->id }})" wire:navigate
+                            wire:confirm="Are you sure want to delete!"
+                            class="cursor-pointer font-medium text-red-600 dark:text-red-500 hover:underline">Delete</a>
                     </div>
                 @empty
                     <p class="p-4 text-gray-500 dark:text-gray-400">No posts yet.</p>

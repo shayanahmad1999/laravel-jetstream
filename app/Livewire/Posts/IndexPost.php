@@ -4,6 +4,7 @@ namespace App\Livewire\Posts;
 
 use App\Actions\Post\IndexPost as PostIndexPost;
 use App\Models\Post;
+use Illuminate\Support\Facades\Storage;
 use Livewire\Attributes\Layout;
 use Livewire\Component;
 
@@ -14,6 +15,20 @@ class IndexPost extends Component
     {
         $post = Post::findOrFail($id);
         $post->update(['status' => $post->status === 'draft' ? 'published' : 'draft']);
+    }
+
+    public function delete($id)
+    {
+        try {
+            $post = Post::findOrFail($id);
+            if ($post->image) {
+                Storage::disk('public')->delete($post->image);
+            }
+            $post->delete();
+            session()->flash('success', 'Post deleted successfully!');
+        } catch (\Throwable $th) {
+            session()->flash('error', $th->getMessage());
+        }
     }
 
     public function render()
