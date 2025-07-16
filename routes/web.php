@@ -1,6 +1,7 @@
 <?php
 
 use App\Livewire\Posts\CreatePost;
+use App\Livewire\Posts\EditPost;
 use App\Livewire\Posts\IndexPost;
 use Illuminate\Support\Facades\Route;
 
@@ -19,4 +20,5 @@ Route::middleware([
 
     Route::get('/posts', IndexPost::class)->name('posts.index');
     Route::get('/posts/create', CreatePost::class)->name('posts.create');
+    Route::get('/posts/{slug}/edit', EditPost::class)->name('posts.edit');
 });

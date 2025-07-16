@@ -11,6 +11,13 @@
                 Post</a>
         </div>
     </div>
+    @if (session()->has('success'))
+        {!! display_message(session('success'), 'success') !!}
+    @endif
+
+    @if (session()->has('error'))
+        {!! display_message(session('error'), 'error') !!}
+    @endif
     <div>
         <div class="max-w-7xl mx-auto py-10 sm:px-6 lg:px-8">
             <div class="divide-y divide-gray-200 dark:divide-gray-700">
@@ -31,7 +38,7 @@
                         <!-- Post Content -->
                         <div class="flex-1">
                             <h2 class="text-lg font-semibold text-gray-900 dark:text-white">
-                                {{ $post->title }}
+                                <a href="{{ route('posts.edit', $post->slug) }}" wire:navigate>{{ $post->title }}</a>
                             </h2>
                             <p class="mt-1 text-gray-700 dark:text-gray-300 line-clamp-3">
                                 {{ $post->content }}
