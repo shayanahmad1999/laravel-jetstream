@@ -63,4 +63,11 @@ class PostPolicy
     {
         return false;
     }
+
+    public function statusChanged(User $user, Post $post): Response
+    {
+        return $user->isSuperAdmin()
+            ? Response::allow()
+            : Response::deny('Only super admins can change the status');
+    }
 }

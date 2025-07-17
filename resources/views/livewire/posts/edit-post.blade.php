@@ -40,7 +40,7 @@
                 </div>
 
                 <!-- Status -->
-                <div>
+                {{-- <div>
                     <label class="block text-sm font-medium text-gray-700 dark:text-gray-200">Status</label>
                     <select wire:model="status"
                         class="mt-1 block w-full rounded-md border-gray-300 dark:border-gray-600 dark:bg-gray-900 dark:text-white">
@@ -50,7 +50,7 @@
                     @error('status')
                         <span class="text-sm text-red-500">{{ $message }}</span>
                     @enderror
-                </div>
+                </div> --}}
 
                 <!-- Image Upload -->
                 <div>

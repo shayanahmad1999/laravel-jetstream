@@ -28,7 +28,9 @@ class IndexPost extends Component
     public function updateStatus($id)
     {
         $post = Post::findOrFail($id);
+        $this->authorize('statusChanged', $post);
         $post->update(['status' => $post->status === 'draft' ? 'published' : 'draft']);
+        session()->flash('success', 'Post status updated successfully.');
     }
 
     public function delete($id)
