@@ -88,4 +88,11 @@ class User extends Authenticatable implements MustVerifyEmail
     {
         return $this->role === 'Creator';
     }
+
+    public function likedPosts()
+    {
+        return $this->belongsToMany(Post::class, 'post_likes')
+            ->withPivot('team_id')
+            ->withTimestamps();
+    }
 }
