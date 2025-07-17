@@ -93,7 +93,7 @@ php artisan key:generate
 
 # run the migrations and seeder
 
-php artisan migrate
+php artisan migrate --seed
 
 ```
 
