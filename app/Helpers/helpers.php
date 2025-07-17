@@ -13,7 +13,7 @@ if (!function_exists('display_message')) {
         $color = $colors[$type] ?? 'gray';
 
         return '
-    <div class="p-4 mb-4 rounded bg-' . $color . '-100 text-' . $color . '-700 dark:bg-' . $color . '-800 dark:text-' . $color . '-200">
+    <div class="max-w-7xl mx-auto py-4 mt-4 sm:px-6 lg:px-8 rounded-2xl bg-' . $color . '-100 text-gray-50 dark:bg-' . $color . '-800 dark:text-gray-200">
         ' . $message . '
     </div>
     ';
