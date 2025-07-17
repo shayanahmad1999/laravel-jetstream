@@ -18,6 +18,9 @@
                     <x-nav-link wire:navigate href="{{ route('posts.index') }}" :active="request()->routeIs('posts.*')">
                         {{ __('Posts') }}
                     </x-nav-link>
+                    <x-nav-link wire:navigate href="{{ route('users.index') }}" :active="request()->routeIs('users.*')">
+                        {{ __('Users') }}
+                    </x-nav-link>
                 </div>
             </div>
 
@@ -159,6 +162,9 @@
             </x-responsive-nav-link>
             <x-responsive-nav-link wire:navigate href="{{ route('posts.index') }}" :active="request()->routeIs('posts.*')">
                 {{ __('Posts') }}
+            </x-responsive-nav-link>
+            <x-responsive-nav-link wire:navigate href="{{ route('users.index') }}" :active="request()->routeIs('users.*')">
+                {{ __('Users') }}
             </x-responsive-nav-link>
         </div>
 
