@@ -54,4 +54,9 @@ class Post extends Model
     {
         return $this->likes->contains(auth()->id());
     }
+
+    public function postLikes()
+    {
+        return $this->hasMany(PostLike::class);
+    }
 }

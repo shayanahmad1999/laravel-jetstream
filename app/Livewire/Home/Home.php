@@ -6,10 +6,13 @@ use App\Models\Post;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Attributes\Layout;
 use Livewire\Component;
+use Livewire\WithPagination;
 
 #[Layout('layouts.app')]
 class Home extends Component
 {
+    use WithPagination;
+
     public function toggleLike($postId)
     {
         $user = request()->user();
@@ -33,42 +36,11 @@ class Home extends Component
     {
         $user = Auth::user();
 
-        $role = $user->role; // assuming 'SuperAdmin', 'Admin', 'Creator', or 'Guest'
+        $likedPosts = $user->likedPosts()
+            ->with(['user:id,name'])
+            ->withCount('likes')
+            ->paginate(10);
 
-        switch ($role) {
-            case 'Super Admin':
-                $likedPosts = Post::with(['user:id,name', 'likes'])
-                    ->withCount('likes')
-                    ->whereHas('likes')
-                    ->get();
-                break;
-
-            case 'Admin':
-                $likedPosts = Post::with(['user:id,name', 'likes'])
-                    ->withCount('likes')
-                    ->where(function ($query) use ($user) {
-                        $query->whereHas('likes', fn($q) => $q->where('user_id', $user->id))
-                            ->orWhereHas('likes', fn($q) => $q->where('team_id', $user->team_id));
-                    })
-                    ->get();
-                break;
-
-            case 'Creator':
-                $likedPosts = Post::with(['user:id,name', 'likes'])
-                    ->withCount('likes')
-                    ->where('user_id', $user->id)
-                    ->get();
-                break;
-
-            default: // Guest
-                $likedPosts = $user->likedPosts()
-                    ->with(['user:id,name', 'likes'])
-                    ->withCount('likes')
-                    ->get();
-                break;
-        }
-
-        // Optional: mark liked status
         $likedPosts->map(function ($post) use ($user) {
             $post->liked = $post->likes->contains($user->id);
             return $post;

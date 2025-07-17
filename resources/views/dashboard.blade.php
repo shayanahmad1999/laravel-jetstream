@@ -40,6 +40,12 @@
 
                         <span class="text-sm text-gray-600 dark:text-gray-300">{{ $post->likes_count }}</span>
                     </div>
+                    <div class="mt-3 text-sm text-gray-600 dark:text-gray-300">
+                        <strong>Liked by:</strong>
+                        @foreach ($post->postLikes as $like)
+                            {{ $like->user->name ?? 'Unknown' }}{{ !$loop->last ? ', ' : '' }}
+                        @endforeach
+                    </div>
                 </div>
             @empty
                 <div
@@ -48,5 +54,6 @@
                 </div>
             @endforelse
         </div>
+        <div class="p-2 mt-6">{{ $posts->links() }}</div>
     </div>
 </div>
