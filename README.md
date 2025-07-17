@@ -68,6 +68,19 @@ https://jetstream.laravel.com/introduction.html
 
 ```
 
+## Prerequisites
+
+Ensure the following tools are installed on your system:
+🔧 Tech Stack:
+
+-   PHP >= 8.3
+-   Laravel = 12
+-   Livewire = 3
+-   Composer
+-   Node.js >= 24.x
+-   NPM >= 8.x
+-   MySQL or any supported database
+
 # clone the repo
 
 git clone https://github.com/shayanahmad1999/laravel-jetstream.git
@@ -96,7 +109,6 @@ php artisan key:generate
 php artisan migrate --seed
 
 ```
-
 
 ## If You Want to Install Breeze Then Follow
 
