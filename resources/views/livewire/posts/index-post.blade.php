@@ -21,7 +21,8 @@
     <div>
         <div class="max-w-7xl mx-auto py-10 sm:px-6 lg:px-8">
 
-            <div class="bg-white dark:bg-gray-900 shadow-md rounded-lg p-6 border border-gray-200 dark:border-gray-700 mb-4">
+            <div
+                class="bg-white dark:bg-gray-900 shadow-md rounded-lg p-6 border border-gray-200 dark:border-gray-700 mb-4">
                 <h2 class="text-xl font-semibold text-gray-800 dark:text-gray-100 mb-4">🔍 Search & Filter</h2>
 
                 <div class="flex flex-col md:flex-row gap-4">
@@ -84,6 +85,12 @@
                             <a wire:click="delete({{ $post->id }})" wire:navigate
                                 wire:confirm="Are you sure want to delete!"
                                 class="cursor-pointer font-medium text-red-600 dark:text-red-500 hover:underline">Delete</a>
+                        @endcan
+                        |
+                        @can('view', $post)
+                            <a href="{{ route('posts.view', $post->slug) }}" wire:navigate
+                                wire:confirm="Are you sure want to delete!"
+                                class="cursor-pointer font-medium text-cyan-600 dark:text-cyan-500 hover:underline">View</a>
                         @endcan
                         |
                         <a href="{{ route('posts.edit', $post->slug) }}" wire:navigate

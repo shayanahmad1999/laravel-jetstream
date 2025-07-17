@@ -4,6 +4,7 @@ use App\Livewire\Home\Home;
 use App\Livewire\Posts\CreatePost;
 use App\Livewire\Posts\EditPost;
 use App\Livewire\Posts\IndexPost;
+use App\Livewire\Posts\ViewPost;
 use App\Livewire\Users\CreateUser;
 use App\Livewire\Users\EditUser;
 use App\Livewire\Users\IndexUser;
@@ -28,6 +29,7 @@ Route::middleware([
         Route::get('/posts', IndexPost::class)->name('posts.index');
         Route::get('/posts/create', CreatePost::class)->name('posts.create');
         Route::get('/posts/{slug}/edit', EditPost::class)->name('posts.edit');
+        Route::get('/posts/{slug}/view', ViewPost::class)->name('posts.view');
     });
 
     Route::middleware(['multiRole:Super Admin,Admin'])->group(function () {
