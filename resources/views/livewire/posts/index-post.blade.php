@@ -20,6 +20,30 @@
     @endif
     <div>
         <div class="max-w-7xl mx-auto py-10 sm:px-6 lg:px-8">
+
+            <div class="bg-white dark:bg-gray-900 shadow-md rounded-lg p-6 border border-gray-200 dark:border-gray-700 mb-4">
+                <h2 class="text-xl font-semibold text-gray-800 dark:text-gray-100 mb-4">🔍 Search & Filter</h2>
+
+                <div class="flex flex-col md:flex-row gap-4">
+                    <input type="text" wire:model.live.debounce.500ms="search"
+                        placeholder="Search title or content..."
+                        class="w-full px-4 py-2 rounded-md border border-gray-300 dark:border-gray-600 
+                   bg-white dark:bg-gray-800 text-gray-800 dark:text-gray-100 
+                   placeholder-gray-400 dark:placeholder-gray-500 shadow-sm 
+                   focus:outline-none focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400 
+                   transition-all duration-300" />
+
+                    <input type="text" wire:model.live.debounce.500ms="userFilter"
+                        placeholder="Filter by author name..."
+                        class="w-full px-4 py-2 rounded-md border border-gray-300 dark:border-gray-600 
+                   bg-white dark:bg-gray-800 text-gray-800 dark:text-gray-100 
+                   placeholder-gray-400 dark:placeholder-gray-500 shadow-sm 
+                   focus:outline-none focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400 
+                   transition-all duration-300" />
+                </div>
+            </div>
+
+
             <div class="divide-y divide-gray-200 dark:divide-gray-700">
                 @forelse ($posts as $post)
                     <div

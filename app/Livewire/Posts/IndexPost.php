@@ -15,8 +15,10 @@ class IndexPost extends Component
 {
     use WithPagination;
 
-    // #[Url(history: true)]
-    // public $search = '';
+    #[Url(history: true)]
+    public string $search = '';
+    #[Url(history: true)]
+    public string $userFilter = '';
 
     // protected $updatesQueryString = ['search'];
 
@@ -49,7 +51,7 @@ class IndexPost extends Component
 
     public function render()
     {
-        $posts = (new PostIndexPost())->handle();
+        $posts = (new PostIndexPost())->handle($this->search, $this->userFilter);
         return view('livewire.posts.index-post', [
             'posts' => $posts
         ]);
